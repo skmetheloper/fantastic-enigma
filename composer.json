@@ -1,0 +1,19 @@
+{
+  "name": "fantastic-enigma",
+  "description": "testing for proxy server",
+  "version": "0.1.0",
+  "license": "MIT",
+  "authors": [{
+    "name": "Shin Maung Maung",
+    "email": "ethereal97@gmail.com"
+  }],
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {},
+    "files": [
+      "src/helpers.php"
+    ]
+  }
+}
