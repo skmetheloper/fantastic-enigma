@@ -17,11 +17,11 @@ $path = parse_url($uri, PHP_URL_PATH);
 
 $headers = [];
 
-array_map(array_keys($_SERVER), function ($name) use(&$headers) {
+array_map(function ($name) use(&$headers) {
   if (!preg_match(HTTP_HEADER_FORMAT, $name, $matched)) return;
   $name = str_replace('_', '-', strtolower($matched[1]));
   $headers[$name] = $_SERVER[$name];
-});
+}, array_keys($_SERVER));
 
 $res = compact('method', 'headers', 'uri', 'path', 'query', 'data', 'cookie', 'files');
 $res = json_encode($res, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
