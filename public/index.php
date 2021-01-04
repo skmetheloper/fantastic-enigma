@@ -3,6 +3,11 @@
 error_reporting(-1);
 ini_set('display_errors', 'Off');
 
+if (($_SERVER['SERVER_PORT'] ?? null) == 80) {
+  header("Location: https://{$_SERVER['HTTP_HOST']}", true, 301);
+  exit(0);
+}
+
 require __DIR__.'/../vendor/autoload.php';
 
 define('HTTP_HEADER_FORMAT', '/^HTTP_(.+)$/');
