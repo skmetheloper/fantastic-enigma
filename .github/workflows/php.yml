@@ -1,18 +1,16 @@
-name: PHP Composer
-
+name: Test
 on:
   push:
     branches: [ main ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Validate composer.json
-      run: composer validate
     - name: Installing Dependencies
       run: composer install --no-dev
     - name: Test Running
       run: php public/index.php
+    - name: Print Lock File
+      run: php -r 'is_file("composer.lock") && var_dump(file_get_contents("composer.lock"));'
 
